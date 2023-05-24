@@ -3,6 +3,16 @@ SPIFFSEditor modifications ported from https://github.com/lorol/ESPAsyncWebServe
 Unfortunately at the time of writing lorol's fork randomly crashes the ESP8266 when opening FS editor so I extracted the relevant part and ported it to 
 to me-no-dev's library.
 
+Instruction to crete the .h file with the minified gzip version of edit.htm:
+
+- minify the edit.htm using html-minifier-terser available here: https://terser.org/html-minifier-terser
+- copy the minified version and save it to ./extras/edit_mini.htm
+- generate the gzipped version using 7zip, open a cmd line ad run: 
+    "c:\Program Files\7-Zip\7z.exe" a -tgzip -mx9 edit.htm.gz edit_mini.htm
+- generate the header file by runnig in the same cmd line the executable in "extras" folder: 
+    ehg.exe edit.htm.gz PROGMEM
+- now copy edit.htm.gz and  edit.htm.gz.h in the "src" folder of your library
+
 # ESPAsyncWebServer 
 [![Build Status](https://travis-ci.org/me-no-dev/ESPAsyncWebServer.svg?branch=master)](https://travis-ci.org/me-no-dev/ESPAsyncWebServer) ![](https://github.com/me-no-dev/ESPAsyncWebServer/workflows/ESP%20Async%20Web%20Server%20CI/badge.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/395dd42cfc674e6ca2e326af3af80ffc)](https://www.codacy.com/manual/me-no-dev/ESPAsyncWebServer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=me-no-dev/ESPAsyncWebServer&amp;utm_campaign=Badge_Grade)
 
